@@ -25,7 +25,16 @@ function CreateEns({ ensName, setEnsName, startVerifing }: CreateEnsProps) {
       <motion.div
         animate={expandAnimation}
         transition={{ duration: 0.2, times: [0, 0.7, 1] }}
+        className="space-y-6"
       >
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-slate-900">
+            Create ENS Subname
+          </h1>
+          <p className="text-lg text-slate-400">
+            Create your own subname to join the community
+          </p>
+        </div>
         <Input
           value={ensName}
           onChange={(e) => setEnsName(e.target.value)}

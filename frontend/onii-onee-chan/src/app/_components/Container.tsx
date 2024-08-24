@@ -7,6 +7,7 @@ import { Stepper } from "@/app/_components/Stepper";
 import { useWriteContract } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { CreateEns } from "@/app/_components/CreateEns";
+import { CreateMsg } from "@/app/_components/CreateMsg";
 import { VerifyEns } from "@/app/_components/VerifyEns";
 import { ensAbi } from "@/app/abis/ensAbi";
 
@@ -23,7 +24,7 @@ function Container() {
       startVerifing={isPending}
     />,
     <VerifyEns key="verify-ens" />,
-    <div key="step-3">Step 3 Content</div>,
+    <CreateMsg key="step-3" />,
   ];
 
   const handleCreateEns = async () => {
@@ -62,7 +63,7 @@ function Container() {
   };
 
   return (
-    <main className="p-6 min-h-screen flex flex-col">
+    <main className="p-6 min-h-screen flex flex-col font-mono">
       <div className="flex justify-end mb-4">
         <ConnectButton accountStatus="address" />
       </div>
