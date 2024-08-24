@@ -24,10 +24,12 @@ cast send 0xad89B2e2850590B1cD59465572441776B77aD7b1 "registerSubdomain(string,a
 
 ## Verify Subdomain Owner
 
-Mainnet:
+### Mainnet
+
 cast call 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e "owner(bytes32)" $(cast namehash "harryc.eth") --rpc-url https://eth.llamarpc.com
 
-Sepolia:
+### Sepolia
+
 cast call 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e "owner(bytes32)" $(cast namehash "gawrgura.eth") --rpc-url https://ethereum-sepolia.blockpi.network/v1/rpc/public
 
 cast call 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e "owner(bytes32)" $(cast namehash "grace.gawrgura.eth") --rpc-url https://ethereum-sepolia.blockpi.network/v1/rpc/public
