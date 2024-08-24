@@ -6,7 +6,13 @@ import { useEffect, useRef, useState } from "react";
 import Danmaku from "rc-danmaku";
 import styled from "styled-components";
 
-const sampleTextArr = ["Hello", "GM", "Good Morning", "Good Day"];
+const sampleTextArr = [
+  "Hello(kelly.gawrgura.eth)",
+  "GM(xyz.gawrgura.eth)",
+  "Good Morning(tim.gawrgura.eth)",
+  "Hi(cat.gawrgura.eth)",
+  "Good Day(lovely.gawrgura.eth)",
+];
 
 function CreateMsg() {
   const [isFocused, setIsFocused] = useState(false);
@@ -22,7 +28,7 @@ function CreateMsg() {
 
   useEffect(() => {
     const danmakuIns = new Danmaku(".danmaku-wrapper", {
-      rowHeight: 60,
+      rowHeight: 80,
       speed: 120,
       opacity: 1,
       maxRow: 6,
