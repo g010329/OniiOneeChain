@@ -7,10 +7,10 @@ import Danmaku from "rc-danmaku";
 import styled from "styled-components";
 
 const sampleTextArr = [
-  "Hello(kelly.gawrgura.eth)",
-  "GM(xyz.gawrgura.eth)",
+  "  Hello(kelly.gawrgura.eth)",
+  "       GM(xyz.gawrgura.eth)",
   "Good Morning(tim.gawrgura.eth)",
-  "Hi(cat.gawrgura.eth)",
+  "             Hi(cat.gawrgura.eth)",
 ];
 
 function CreateMsg({ ensName }: { ensName: string }) {
