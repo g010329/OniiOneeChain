@@ -22,7 +22,7 @@ function Container() {
 
   const { data, isLoading, isFetching } = useReadContract({
     abi: scrollAbi,
-    address: "0x3d1Bd102b0B3A52d409D682DA62398e162caBbc2",
+    address: "0x2Db0484Abb8d7Ae6552c0989f4767aBa683C3cbD",
     functionName: "l1SloadGetSubDomainName",
     args: [address],
   });
