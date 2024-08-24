@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import Danmaku from "rc-danmaku";
 import styled from "styled-components";
 
+const sampleTextArr = ["Hello", "GM", "Good Morning", "Good Day"];
+
 function CreateMsg() {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -24,15 +26,15 @@ function CreateMsg() {
       speed: 120,
       opacity: 1,
       maxRow: 6,
-      onBulletIn() {
-        console.log("====bullet in====", danmakuIns.getRestAmount());
-      },
-      onBulletOut() {
-        console.log("====bullet out====", danmakuIns.getRestAmount());
-      },
-      onQueueRunOut() {
-        console.log("====queue run out====");
-      },
+      // onBulletIn() {
+      //   console.log("====bullet in====", danmakuIns.getRestAmount());
+      // },
+      // onBulletOut() {
+      //   console.log("====bullet out====", danmakuIns.getRestAmount());
+      // },
+      // onQueueRunOut() {
+      //   console.log("====queue run out====");
+      // },
     });
 
     danmakuInsRef.current = danmakuIns;
@@ -55,6 +57,19 @@ function CreateMsg() {
       }
     }
   }, [isPaused]);
+
+  useEffect(() => {
+    const timeoutId = setInterval(() => {
+      if (danmakuInsRef.current) {
+        danmakuInsRef.current.pushAll(sampleTextArr, {
+          color: showColor ? colorRef.current : undefined,
+        });
+      }
+    }, 3700);
+
+    // Cleanup function to clear the timeout if the component unmounts
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div>
@@ -91,7 +106,7 @@ function CreateMsg() {
             }
           }}
         >
-          Send Msg
+          Send Message
         </button>
       </Wrapper>
     </div>
