@@ -11,10 +11,9 @@ const sampleTextArr = [
   "GM(xyz.gawrgura.eth)",
   "Good Morning(tim.gawrgura.eth)",
   "Hi(cat.gawrgura.eth)",
-  "Good Day(lovely.gawrgura.eth)",
 ];
 
-function CreateMsg() {
+function CreateMsg({ ensName }: { ensName: string }) {
   const [isFocused, setIsFocused] = useState(false);
 
   const expandAnimation = {
@@ -71,10 +70,18 @@ function CreateMsg() {
           color: showColor ? colorRef.current : undefined,
         });
       }
-    }, 3700);
+    }, 10000);
+    const clearTimeoutId = setInterval(() => {
+      if (danmakuInsRef.current) {
+        danmakuInsRef.current.clearQueue();
+      }
+    }, 12000);
 
     // Cleanup function to clear the timeout if the component unmounts
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+      clearTimeout(clearTimeoutId);
+    };
   }, []);
 
   return (
@@ -102,9 +109,12 @@ function CreateMsg() {
                 ".danmaku-text-input"
               ) as HTMLInputElement;
               if ($input.value && $input.value.trim()) {
-                danmakuInsRef.current.emit($input.value, {
-                  color: showColor ? colorRef.current : undefined,
-                });
+                danmakuInsRef.current.emit(
+                  `${$input.value} (${ensName}.gawrgura.eth)`,
+                  {
+                    color: showColor ? colorRef.current : undefined,
+                  }
+                );
               }
 
               $input.value = "";
@@ -112,7 +122,7 @@ function CreateMsg() {
             }
           }}
         >
-          Send Message
+          Send Message {!!ensName && `(${ensName}.gawrgura.eth)`}
         </button>
       </Wrapper>
     </div>

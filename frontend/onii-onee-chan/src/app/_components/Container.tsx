@@ -39,7 +39,7 @@ function Container() {
       startVerifing={isPending}
     />,
     // <VerifyEns key="verify-ens" />,
-    <CreateMsg key="create-msg" />,
+    <CreateMsg key="create-msg" ensName={ensName} />,
   ];
 
   const handleCreateEns = async () => {
