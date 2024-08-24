@@ -11,7 +11,7 @@ import { VerifyEns } from "@/app/_components/VerifyEns";
 import { ensAbi } from "@/app/abis/ensAbi";
 
 function Container() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [ensName, setEnsName] = useState("");
   const { data, error, isPending, writeContract } = useWriteContract();
 

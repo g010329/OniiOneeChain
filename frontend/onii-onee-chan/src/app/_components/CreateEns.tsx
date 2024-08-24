@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 interface CreateEnsProps {
   ensName: string;
@@ -16,7 +17,7 @@ function CreateEns({ ensName, setEnsName, startVerifing }: CreateEnsProps) {
   };
 
   if (startVerifing) {
-    return <div>Verifying...</div>;
+    return <Image src="/loading.gif" alt="verify" width={250} height={250} />;
   }
 
   return (
