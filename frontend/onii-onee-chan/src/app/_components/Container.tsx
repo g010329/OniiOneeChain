@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Button } from "@/components/ui/button";
 import { Stepper } from "@/app/_components/Stepper";
 
-import { useWriteContract } from "wagmi";
+import { useWriteContract, useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { CreateEns } from "@/app/_components/CreateEns";
 import { CreateMsg } from "@/app/_components/CreateMsg";
 import { VerifyEns } from "@/app/_components/VerifyEns";
 import { ensAbi } from "@/app/abis/ensAbi";
 
+const CONTRACT_ADDRESS = "0x9306A314b0f88D0B9dC6eac8B8eaE93ec05da86E";
+
 function Container() {
   const [currentStep, setCurrentStep] = useState(0);
   const [ensName, setEnsName] = useState("");
-  const { data, error, isPending, writeContract } = useWriteContract();
+  const { error, isSuccess, isPending, writeContract } = useWriteContract();
+  const { address } = useAccount();
 
   const steps = [
     <CreateEns
@@ -29,24 +32,11 @@ function Container() {
 
   const handleCreateEns = async () => {
     await writeContract({
-      address: "0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2",
+      address: CONTRACT_ADDRESS,
       abi: ensAbi,
-      functionName: "mint",
-      args: [
-        {
-          name: ensName,
-        },
-      ],
+      functionName: "registerSubdomain",
+      args: [ensName, address],
     });
-
-    if (data) {
-      console.log(data);
-      setCurrentStep(2);
-    }
-
-    if (error) {
-      console.error(error);
-    }
   };
 
   const nextStep = () =>
@@ -61,6 +51,16 @@ function Container() {
 
     direction === "next" ? nextStep() : prevStep();
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setCurrentStep(1);
+    }
+
+    if (!!error) {
+      console.error(error);
+    }
+  }, [isSuccess, error]);
 
   return (
     <main className="p-6 min-h-screen flex flex-col font-mono">
