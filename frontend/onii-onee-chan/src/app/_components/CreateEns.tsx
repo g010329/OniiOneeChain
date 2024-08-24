@@ -44,7 +44,7 @@ function CreateEns({ ensName, setEnsName, startVerifing }: CreateEnsProps) {
           onBlur={() => setIsFocused(false)}
         />
       </motion.div>
-      <p className="text-2xl text-slate-500">.onii-onee-chan.eth</p>
+      <p className="text-2xl text-slate-500">.gawrgura.eth</p>
     </div>
   );
 }

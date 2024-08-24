@@ -4,20 +4,33 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { Button } from "@/components/ui/button";
 import { Stepper } from "@/app/_components/Stepper";
 
-import { useWriteContract, useAccount } from "wagmi";
+import { useWriteContract, useAccount, useReadContract } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { CreateEns } from "@/app/_components/CreateEns";
 import { CreateMsg } from "@/app/_components/CreateMsg";
 import { VerifyEns } from "@/app/_components/VerifyEns";
 import { ensAbi } from "@/app/abis/ensAbi";
+import { scrollAbi } from "@/app/abis/scrollAbi";
 
-const CONTRACT_ADDRESS = "0x9306A314b0f88D0B9dC6eac8B8eaE93ec05da86E";
+const CONTRACT_ADDRESS = "0xad89B2e2850590B1cD59465572441776B77aD7b1";
 
 function Container() {
   const [currentStep, setCurrentStep] = useState(0);
   const [ensName, setEnsName] = useState("");
   const { error, isSuccess, isPending, writeContract } = useWriteContract();
   const { address } = useAccount();
+
+  const { data, isLoading, isFetching } = useReadContract({
+    abi: scrollAbi,
+    address: "0x3d1Bd102b0B3A52d409D682DA62398e162caBbc2",
+    functionName: "l1SloadGetSubDomainName",
+    args: [address],
+  });
+  console.log(isLoading, isFetching);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const steps = [
     <CreateEns
