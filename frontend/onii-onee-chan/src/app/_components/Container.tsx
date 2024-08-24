@@ -76,11 +76,11 @@ function Container() {
   }, [isSuccess, error]);
 
   return (
-    <main className="p-6 min-h-screen flex flex-col font-mono">
+    <main className="p-6 min-h-screen flex flex-col font-mono bg-purple-50">
       <div className="flex justify-end mb-4">
         <ConnectButton accountStatus="address" />
       </div>
-      <section className="flex-grow flex items-center justify-center overflow-hidden">
+      <section className="flex-grow flex items-center justify-center overflow-hidden border-4 border-purple-50 rounded-[40px] bg-white">
         <Stepper childrens={steps} currentStep={currentStep} />
       </section>
       <div className="flex justify-between mt-4">
@@ -91,15 +91,18 @@ function Container() {
         >
           <FaChevronLeft />
         </Button>
-        <Button
-          className="min-w-[100px] bg-main hover:bg-main/80"
-          onClick={() => handleStep("next")}
-          disabled={
-            currentStep === steps.length - 1 || (!ensName && currentStep === 0)
-          }
-        >
-          Next
-        </Button>
+        {currentStep !== 2 && (
+          <Button
+            className="min-w-[100px] bg-main hover:bg-main/80"
+            onClick={() => handleStep("next")}
+            disabled={
+              currentStep === steps.length - 1 ||
+              (!ensName && currentStep === 0)
+            }
+          >
+            Next
+          </Button>
+        )}
       </div>
     </main>
   );

@@ -23,7 +23,7 @@ function CreateMsg() {
       rowHeight: 60,
       speed: 120,
       opacity: 1,
-      maxRow: 3,
+      maxRow: 6,
       onBulletIn() {
         console.log("====bullet in====", danmakuIns.getRestAmount());
       },
@@ -60,21 +60,20 @@ function CreateMsg() {
     <div>
       <Wrapper className="test-danmaku">
         <div className="danmaku-wrapper" />
-
-        <motion.div
+        {/* <motion.div
           animate={expandAnimation}
           transition={{ duration: 0.2, times: [0, 0.7, 1] }}
           className="space-y-6"
-        >
-          <Input
-            className="danmaku-text-input focus:border-none focus-visible:ring-[#5A55EB] h-[50px] rounded-2xl text-xl placeholder:text-slate-400"
-            placeholder="hello"
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          />
-        </motion.div>
+        > */}
+        <Input
+          className="danmaku-text-input focus:border-none focus-visible:ring-[#5A55EB] h-[80px] rounded-2xl text-xl placeholder:text-slate-400 min-w-[400px]"
+          placeholder="hello"
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+        {/* </motion.div> */}
         <button
-          className="mt-4"
+          className="mt-10 rounded-full bg-purple-400 py-4 px-6 text-white"
           type="button"
           onClick={(): void => {
             if (danmakuInsRef.current) {
