@@ -3,6 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { useChainId } from "wagmi";
 import Danmaku from "rc-danmaku";
 import styled from "styled-components";
 
@@ -13,9 +14,11 @@ const sampleTextArr = [
   "             Hi(cat.gawrgura.eth)",
 ];
 
+const SCROLL_DEVNET_CHAIN_ID = 2227728;
+
 function CreateMsg({ ensName }: { ensName: string }) {
   const [isFocused, setIsFocused] = useState(false);
-
+  const chainId = useChainId();
   const expandAnimation = {
     width: isFocused ? ["480px", "680px", "660px"] : "680px",
   };
@@ -122,7 +125,10 @@ function CreateMsg({ ensName }: { ensName: string }) {
             }
           }}
         >
-          Send Message {!!ensName && `(${ensName}.gawrgura.eth)`}
+          Send Message{" "}
+          {chainId === SCROLL_DEVNET_CHAIN_ID &&
+            !!ensName &&
+            `(${ensName}.gawrgura.eth)`}
         </button>
       </Wrapper>
     </div>

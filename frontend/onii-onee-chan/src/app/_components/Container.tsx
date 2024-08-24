@@ -15,7 +15,7 @@ import { scrollAbi } from "@/app/abis/scrollAbi";
 const CONTRACT_ADDRESS = "0xad89B2e2850590B1cD59465572441776B77aD7b1";
 
 function Container() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [ensName, setEnsName] = useState("");
   const { error, isSuccess, isPending, writeContract } = useWriteContract();
   const { address } = useAccount();
