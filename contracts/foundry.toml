@@ -9,6 +9,9 @@ remappings=[
   "@uniswap/v3-core/contracts=lib/v3-core/contracts",
 ]
 
+[profile.dependencies]
+ens-contracts = { git = "https://github.com/ensdomains/ens-contracts.git", branch = "feature/subdomain-registrar" }
+
 [rpc_endpoints]
 sepolia = "${SEPOLIA_RPC_URL}"
 
