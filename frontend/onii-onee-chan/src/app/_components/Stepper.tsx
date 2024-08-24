@@ -1,12 +1,11 @@
 "use client";
 
-function StepContainer({
-  childrens,
-  currentStep,
-}: {
+interface StepperProps {
   childrens: React.ReactNode[];
   currentStep: number;
-}) {
+}
+
+function Stepper({ childrens, currentStep }: StepperProps) {
   return (
     <div
       className="w-full transition-transform duration-300 ease-in-out flex"
@@ -24,4 +23,4 @@ function StepContainer({
   );
 }
 
-export { StepContainer };
+export { Stepper };
