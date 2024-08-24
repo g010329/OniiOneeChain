@@ -1,5 +1,6 @@
 # OniiOneeChain
 
+<img width="1427" alt="image" src="https://github.com/user-attachments/assets/619ddb5a-f14a-4849-b7d8-db9dc1099e4f">
 A Vtuber related project
 
 # Deploy
