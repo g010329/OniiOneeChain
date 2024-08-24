@@ -29,24 +29,33 @@ function Stepper({ childrens, currentStep }: StepperProps) {
         >
           {idx === 1 && (
             <div className="w-[300px] space-y-10">
-              {[
-                "/img_3.png",
-                "/img_1.png",
-                "/img_2.png",
-                "/img_1.png",
-                "/img_3.png",
-                "/img_2.png",
-              ].map((src, imgIdx) => (
+              {["/img_1.png", "/img_3.png", "/img_2.png"].map((src, imgIdx) => (
                 <motion.img
                   key={imgIdx}
                   src={src}
                   alt="img"
-                  className={`w-[${[80, 60, 80, 60, 50, 60][imgIdx]}px] ml-[${
-                    [60, -40, 100, 0, 180, 0][imgIdx]
+                  className={`w-[${[80, 60, 80][imgIdx]}px] ml-[${
+                    [60, -40, 100][imgIdx]
                   }px]`}
                   animate={getRandomSwing()}
                 />
               ))}
+              <div>
+                <div className="h-[60px]"></div>
+                <div className="flex justify-between px-10 animate-bounce">
+                  <span className="text-blue-400 bg-purple-50 p-3 rounded-full">
+                    お兄ちゃん
+                  </span>
+                  <span className="text-purple-400 bg-blue-50 p-3 rounded-full">
+                    お姉ちゃん
+                  </span>
+                </div>
+                <img
+                  src={"/role.png"}
+                  alt="img"
+                  className="w-[160px] ml-[60px]"
+                />
+              </div>
             </div>
           )}
           {step}
