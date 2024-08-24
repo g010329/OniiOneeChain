@@ -1,7 +1,7 @@
 "use client";
 import "@rainbow-me/rainbowkit/styles.css";
 
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { RainbowKitProvider, lightTheme } from "@rainbow-me/rainbowkit";
 import { config } from "@/configs/rainbowkit.config";
 import { WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -13,7 +13,12 @@ export default function App() {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <RainbowKitProvider
+          locale="en-US"
+          theme={lightTheme({
+            ...lightTheme.accentColors.purple,
+          })}
+        >
           <main className="p-6">
             <div className="flex justify-end">
               <ConnectButton accountStatus="address" />
