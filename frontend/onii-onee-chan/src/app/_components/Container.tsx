@@ -80,7 +80,9 @@ function Container() {
         <Button
           className="min-w-[100px] bg-main hover:bg-main/80"
           onClick={() => handleStep("next")}
-          disabled={currentStep === steps.length - 1 || !ensName}
+          disabled={
+            currentStep === steps.length - 1 || (!ensName && currentStep === 0)
+          }
         >
           Next
         </Button>
