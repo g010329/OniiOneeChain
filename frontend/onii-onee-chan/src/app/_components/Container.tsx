@@ -15,7 +15,7 @@ import { scrollAbi } from "@/app/abis/scrollAbi";
 const CONTRACT_ADDRESS = "0xad89B2e2850590B1cD59465572441776B77aD7b1";
 
 function Container() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const [ensName, setEnsName] = useState("");
   const { error, isSuccess, isPending, writeContract } = useWriteContract();
   const { address } = useAccount();
@@ -26,7 +26,6 @@ function Container() {
     functionName: "l1SloadGetSubDomainName",
     args: [address],
   });
-  console.log(isLoading, isFetching);
 
   useEffect(() => {
     console.log(data);
@@ -39,8 +38,8 @@ function Container() {
       setEnsName={setEnsName}
       startVerifing={isPending}
     />,
-    <VerifyEns key="verify-ens" />,
-    <CreateMsg key="step-3" />,
+    // <VerifyEns key="verify-ens" />,
+    <CreateMsg key="create-msg" />,
   ];
 
   const handleCreateEns = async () => {
